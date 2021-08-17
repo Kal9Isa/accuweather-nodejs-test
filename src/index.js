@@ -4,7 +4,11 @@ const weatherSrcURL =
     ? process.argv[2]
     : 'https://www.accuweather.com/en/gb/london/ec4a-2/august-weather/328328';
 
-// TODO Get current time to find day of month
+		// TODO Get current time to find day of month
+const today = new Date().getDate();
+
+
+
 // TODO Send req to URL
 // TODO Find End of Month - EoM index
 // TODO Diff the EoM from current day
