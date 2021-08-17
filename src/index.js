@@ -1,4 +1,4 @@
-// TODO Get URL from user
+// Get URL from user
 const weatherSrcURL =
   process.argv[2] != undefined
     ? process.argv[2]
