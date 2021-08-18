@@ -29,6 +29,14 @@ const sendAllReqs = async (links, diff) => {
   return await Promise.all(reqs);
 };
 
+const arrToJSON = (arr) => {
+  let dataObj = {};
+  arr.forEach((element) => {
+    dataObj[element.shortDate] = element;
+  });
+  return JSON.stringify(dataObj);
+};
+
 const main = async () => {
   let dayLinks = [];
   await axios(weatherSrcURL)
@@ -38,14 +46,13 @@ const main = async () => {
       let lastDay = findEoM(response);
       let diffDaysCount = lastDay - today;
       let final = await sendAllReqs(dayLinks, diffDaysCount);
-      console.log(final);
+      console.log(arrToJSON(final));
     })
     .catch(console.error);
 };
 
 main();
 
-// TODO when all resolved save data in object & convert to JSON
 // TODO Save JSON in file
 // TODO bug fix
 // TODO refactor
