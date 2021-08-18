@@ -29,9 +29,7 @@ Using [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscod
 
 ## Known Bugs
 
-1. Data extracted is not valid and needs heavy grooming.
-2. When given a fresh month, it fails to load data properly due to starting from today time.
-3. Crashes on bad URL due to poor error handling
+See [this list](https://github.com/Kal9Isa/accuweather-nodejs-test/issues).
 
 ## Todo
 
