@@ -27,16 +27,14 @@ const getDailyForecast = (dayURL) => {
 
 const assembleData = async (links) => {
   links.forEach((link) => getDailyForecast(link));
-  console.log(dailyForecastData);
 };
 
 const main = async () => {
-  const links = [];
 
   await axios(weatherSrcURL)
     .then((response) => {
       // monhtly-parser
-      monthlyParser(response)
+      const links = monthlyParser(response)
     })
     .catch(console.error);
 
