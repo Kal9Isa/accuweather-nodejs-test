@@ -1,19 +1,7 @@
 const axios = require('axios');
-const cheerio = require('cheerio');
+const { dailyParser } = require('./services/daily-parser');
+const { monthlyParser } = require('./services/monthly-parser');
 
-const keyEnum = {
-  1: 'Wind',
-  2: 'Wind Gusts',
-  3: 'Probability of Precipitation',
-  4: 'Probability of Thunderstorms',
-  5: 'Precipitation',
-  6: 'Rain',
-  7: 'Hours of Precipitation',
-  8: 'Hours of Rain',
-  9: 'Cloud Cover',
-};
-
-let dailyForecastData = {};
 
 // Get URL from user
 const weatherSrcURL =
@@ -31,51 +19,8 @@ const today = new Date().getDate();
 const getDailyForecast = (dayURL) => {
   axios(`https://www.accuweather.com/${dayURL}`)
     .then((response) => {
-      const html = response.data;
-      const $ = cheerio.load(html);
-      const dailyForecast = $('.half-day-card');
-
-      const panelItemsL = $(dailyForecast).find(
-        '.half-day-card-content > .panels > .left > .panel-item'
-      );
-
-      const panelItemsR = $(dailyForecast).find(
-        '.half-day-card-content > .panels > .right > .panel-item'
-      );
-
-      const data = {
-        daytime: $(dailyForecast).find('.half-day-card-header > .title').text(),
-        temperature: $(dailyForecast)
-          .find('.half-day-card-header > .temperature')
-          .text()
-          .trim(),
-        realFeel: $(dailyForecast)
-          .find('.half-day-card-header > .real-feel > div')
-          .text()
-          .trim(),
-        shortDate: $(dailyForecast)
-          .find('.half-day-card-header > .short-date > div')
-          .text()
-          .trim(),
-        phrase: $(dailyForecast)
-          .find('.half-day-card-content > .phrase')
-          .text()
-          .trim(),
-      };
-
-      let counter = 1;
-      panelItemsL.each(function () {
-        data[keyEnum[counter]] = $(this).find('.value').text();
-        counter++;
-      });
-
-      counter = 6;
-      panelItemsR.each(function () {
-        data[keyEnum[counter]] = $(this).find('.value').text();
-        counter++;
-      });
-
-      dailyForecastData[data.shortDate] = data;
+      // daily-parser
+      dailyParser(response)
     })
     .catch(console.error);
 };
@@ -90,20 +35,13 @@ const main = async () => {
 
   await axios(weatherSrcURL)
     .then((response) => {
-      const html = response.data;
-      const $ = cheerio.load(html);
-      const forecastDays = $('.monthly-daypanel');
-
-      forecastDays.each(function () {
-        let link = $(this).attr('href');
-        if (link) links.push(link);
-      });
+      // monhtly-parser
+      monthlyParser(response)
     })
     .catch(console.error);
 
   await assembleData(links);
   // TODO Send req for each day (*run multi-threaded) only in current month
-  // getDailyForecast(links[0]);
 };
 
 main();
