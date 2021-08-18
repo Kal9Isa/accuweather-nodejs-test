@@ -11,7 +11,7 @@ Clone the project, navigate into the and run _accuweather-nodejs-test_ directory
 
 `$ npm i `
 
-Make sure you have the _Prettier_ and _ESLint_ extensions installed if on _VSCode_.
+Make sure you have the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslintlink) and [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) extensions installed if on _VSCode_.
 
 ## See the magic! :P
 
