@@ -50,5 +50,6 @@ let dailyForecastData = {};
         counter++;
       });
 
-      dailyForecastData[data.shortDate] = data;
+      console.log(data);
+    //   dailyForecastData[data.shortDate] = data;
 }
