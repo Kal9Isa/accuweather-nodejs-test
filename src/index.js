@@ -2,7 +2,6 @@ const axios = require('axios');
 const { dailyParser } = require('./services/daily-parser');
 const { monthlyParser } = require('./services/monthly-parser');
 
-
 // Get URL from user
 const weatherSrcURL =
   process.argv[2] != undefined
@@ -16,33 +15,35 @@ const today = new Date().getDate();
 
 // TODO Send req to URL & fix a list of urls
 // TODO Refactor
-const getDailyForecast = (dayURL) => {
-  axios(`https://www.accuweather.com/${dayURL}`)
-    .then((response) => {
-      // daily-parser
-      dailyParser(response)
-    })
-    .catch(console.error);
-};
 
-const assembleData = async (links) => {
-  links.forEach((link) => getDailyForecast(link));
-};
+// const sendAllReqs = (links) => {
+//   links.forEach(async (link) => {
+//     let miniPromise = await axios(`https://www.accuweather.com/${dayURL}`)
+//       .then((response) => {
+//         // daily-parser
+//         dailyParser(response);
+//       })
+//       .catch(console.error);
+//   });
+// };
 
 const main = async () => {
-
-  let links = []
+  let dayLinks = [];
   await axios(weatherSrcURL)
     .then((response) => {
       // monhtly-parser
-      links = monthlyParser(response)
+      dayLinks = monthlyParser(response);
     })
     .catch(console.error);
-
-  await assembleData(links);
-  // TODO Send req for each day (*run multi-threaded) only in current month
+  // sendAllReqs(dayLinks);
 };
 
 main();
-// TODO Extract content
-// TODO Save Object in a JSON file
+
+// TODO find EoM
+// TODO find diff of EoM and today
+// TODO Make reqs to match count of diff and wrap each in promise
+// TODO when all resolved save data in object & convert to JSON
+// TODO Save JSON in file
+// TODO bug fix
+// TODO refactor
