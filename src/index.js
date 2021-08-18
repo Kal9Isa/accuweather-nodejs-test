@@ -34,7 +34,8 @@ const main = async () => {
     .then((response) => {
       // monhtly-parser
       // dayLinks = monthlyParser(response);
-      findEoM(response);
+      let lastDay = findEoM(response);
+      let diffDaysCount = lastDay - today;
     })
     .catch(console.error);
   // sendAllReqs(dayLinks);
@@ -42,8 +43,6 @@ const main = async () => {
 
 main();
 
-// TODO find EoM
-// TODO find diff of EoM and today
 // TODO Make reqs to match count of diff and wrap each in promise
 // TODO when all resolved save data in object & convert to JSON
 // TODO Save JSON in file
