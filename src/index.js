@@ -31,10 +31,11 @@ const assembleData = async (links) => {
 
 const main = async () => {
 
+  const links = []
   await axios(weatherSrcURL)
     .then((response) => {
       // monhtly-parser
-      const links = monthlyParser(response)
+      links = monthlyParser(response)
     })
     .catch(console.error);
 
