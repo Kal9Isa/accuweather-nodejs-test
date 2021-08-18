@@ -21,7 +21,7 @@ Run
 
 and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **11.6 s**
 
-## Bugs
+## Known Bugs
 
 1. Data extracted is not valid and needs heavy grooming.
 2. When given a fresh month, it fails to load data properly due to starting from today time.
