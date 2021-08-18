@@ -21,7 +21,7 @@ Run
 
 - If no args given, the URL given in instrauctions will be used as default.
 
-and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **11.6 s**
+and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **11.6 s** _Pffffft ... Slow, I know :/_
 
 ## View the logic diagram
 
@@ -40,3 +40,4 @@ Using [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscod
 - Fix bug #3
 - Refactor to make the code easier to read
 - Write tests if have enough time
+- Increase the performance using worker pool.
