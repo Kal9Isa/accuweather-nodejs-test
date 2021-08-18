@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 
-module.exports.monthlyParser = (payload) => {
+module.exports.monthParser = (payload) => {
   let links = [];
   const html = payload.data;
   const $ = cheerio.load(html);

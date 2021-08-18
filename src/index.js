@@ -1,7 +1,7 @@
 const axios = require('axios');
 const { dayParser } = require('./services/day-parser');
 const { findEoM } = require('./services/find-eom');
-const { monthlyParser } = require('./services/monthly-parser');
+const { monthParser } = require('./services/month-parser');
 
 // Get URL from user
 const weatherSrcURL =
@@ -34,7 +34,7 @@ const main = async () => {
   await axios(weatherSrcURL)
     .then(async (response) => {
       // monhtly-parser
-      dayLinks = monthlyParser(response);
+      dayLinks = monthParser(response);
       let lastDay = findEoM(response);
       let diffDaysCount = lastDay - today;
       let final = await sendAllReqs(dayLinks, diffDaysCount);
