@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { dailyParser } = require('./services/daily-parser');
+const { findEoM } = require('./services/find-eom');
 const { monthlyParser } = require('./services/monthly-parser');
 
 // Get URL from user
@@ -32,7 +33,8 @@ const main = async () => {
   await axios(weatherSrcURL)
     .then((response) => {
       // monhtly-parser
-      dayLinks = monthlyParser(response);
+      // dayLinks = monthlyParser(response);
+      findEoM(response);
     })
     .catch(console.error);
   // sendAllReqs(dayLinks);
