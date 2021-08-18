@@ -56,5 +56,5 @@ const main = async () => {
 
 main();
 
-// TODO bug fix
+// FIXME incorrect data entries
 // TODO refactor
