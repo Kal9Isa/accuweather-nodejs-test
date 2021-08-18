@@ -31,7 +31,7 @@ const assembleData = async (links) => {
 
 const main = async () => {
 
-  const links = []
+  let links = []
   await axios(weatherSrcURL)
     .then((response) => {
       // monhtly-parser
