@@ -33,9 +33,7 @@ See [this list](https://github.com/Kal9Isa/accuweather-nodejs-test/issues).
 
 ## Todo
 
-- Fix bug #1
-- Fix bug #2
-- Fix bug #3
+- Fix bugs
 - Refactor to make the code easier to read
 - Write tests if have enough time
 - Increase the performance using worker pool.
