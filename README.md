@@ -1,0 +1,32 @@
+# Test project
+
+## Topic
+
+Get daily forecast data for the current month from [Accuweather](https://www.accuweather.com/) and
+save the results in a _JSON_ file.
+
+## Setup
+
+Clone the project, navigate into the and run _accuweather-nodejs-test_ directory and run
+
+`$ npm i `
+
+Make sure you have the _Prettier_ and _ESLint_ extensions installed if on _VSCode_.
+
+## See the magic! :P
+
+Run
+
+`$ npm start`
+
+and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **11.6 s**
+
+## Bugs
+
+1. Data extracted is not valid and needs heavy grooming.
+
+## Todo
+
+- Fix bug #1
+- Refactor to make the code easier to read
+- Write tests if have enough time

@@ -1,3 +1,4 @@
+console.time();
 const axios = require('axios');
 const fs = require('fs');
 const { dayParser } = require('./services/day-parser');
@@ -59,6 +60,8 @@ const main = async () => {
           throw err;
         }
         console.log('JSON data is saved.');
+        // Timer for execution time track
+        console.timeEnd();
       });
     })
     .catch(console.error);
