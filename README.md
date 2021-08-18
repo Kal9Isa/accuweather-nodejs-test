@@ -17,9 +17,15 @@ Make sure you have the [Prettier](https://marketplace.visualstudio.com/items?ite
 
 Run
 
-`$ npm start <custom url of accuweather>`
+`$ npm start https://www.accuweather.com/en/gb/london/ec4a-2/august-weather/328328`
+
+- If no args given, the URL given in instrauctions will be used as default.
 
 and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **11.6 s**
+
+## View the logic diagram
+
+Using [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) extension, navigate to _diagrams_ directory and click on the `.drawio` file to see the diagram in _VSCode_.
 
 ## Known Bugs
 
