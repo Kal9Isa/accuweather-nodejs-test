@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { dailyParser } = require('./services/daily-parser');
+const { dayParser } = require('./services/day-parser');
 const { findEoM } = require('./services/find-eom');
 const { monthlyParser } = require('./services/monthly-parser');
 
@@ -17,33 +17,34 @@ const today = new Date().getDate();
 // TODO Send req to URL & fix a list of urls
 // TODO Refactor
 
-// const sendAllReqs = (links) => {
-//   links.forEach(async (link) => {
-//     let miniPromise = await axios(`https://www.accuweather.com/${dayURL}`)
-//       .then((response) => {
-//         // daily-parser
-//         dailyParser(response);
-//       })
-//       .catch(console.error);
-//   });
-// };
+const sendAllReqs = async (links, diff) => {
+  let reqs = [];
+  for (let index = 0; index <= diff; index++) {
+    reqs.push(
+      await axios(`https://www.accuweather.com/${links[index]}`)
+        .then((response) => dayParser(response))
+        .catch(console.error)
+    );
+  }
+  return await Promise.all(reqs);
+};
 
 const main = async () => {
   let dayLinks = [];
   await axios(weatherSrcURL)
-    .then((response) => {
+    .then(async (response) => {
       // monhtly-parser
-      // dayLinks = monthlyParser(response);
+      dayLinks = monthlyParser(response);
       let lastDay = findEoM(response);
       let diffDaysCount = lastDay - today;
+      let final = await sendAllReqs(dayLinks, diffDaysCount);
+      console.log(final);
     })
     .catch(console.error);
-  // sendAllReqs(dayLinks);
 };
 
 main();
 
-// TODO Make reqs to match count of diff and wrap each in promise
 // TODO when all resolved save data in object & convert to JSON
 // TODO Save JSON in file
 // TODO bug fix

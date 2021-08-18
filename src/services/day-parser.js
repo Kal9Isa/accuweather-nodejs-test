@@ -1,9 +1,7 @@
 const cheerio = require('cheerio');
 const { panelItemsEnum } = require('../assets/panelItemsEnum');
 
-module.exports.dailyParser = (payload) => {
-  let dailyForecastData = {};
-
+module.exports.dayParser = (payload) => {
   const html = payload.data;
   const $ = cheerio.load(html);
   const dailyForecast = $('.half-day-card');
@@ -50,6 +48,5 @@ module.exports.dailyParser = (payload) => {
     counter++;
   });
 
-  console.log(data);
-  //   dailyForecastData[data.shortDate] = data;
+  return data;
 };
