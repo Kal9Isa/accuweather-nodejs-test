@@ -54,5 +54,6 @@ module.exports.dayParser = (payload) => {
     counter++;
   });
 
+  console.timeEnd();
   return data;
 };

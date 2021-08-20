@@ -1,4 +1,4 @@
-console.time();
+// console.time();
 const axios = require('axios');
 const fs = require('fs');
 const { findEoM } = require('./services/find-eom');
@@ -26,6 +26,7 @@ const sendAllReqs = async (dailyForecastLinks, start, end) => {
   // Keep requsting until we reach EoM day
   for (index; index <= end.lastDay - start + end.offset; index++) {
     // Wrap all reqs in promise
+    console.time();
     reqs.push(
       // https://www.accuweather.com/en/gb/london/ec4a-2/daily-weather-forecast/328328?day=1
       await axios(`https://www.accuweather.com/${dailyForecastLinks[index]}`)
@@ -65,7 +66,7 @@ const main = async () => {
         }
         console.log('JSON data is saved.');
         // Timer for execution time track
-        console.timeEnd();
+        // console.timeEnd();
       });
     })
     .catch(console.error);
