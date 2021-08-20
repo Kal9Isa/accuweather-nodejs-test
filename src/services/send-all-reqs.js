@@ -7,13 +7,14 @@ const { dayParser } = require('./day-parser');
 module.exports.sendAllReqs = async (dailyForecastLinks, start, end) => {
   let reqs = [],
     index;
+  const { offset, lastDay } = end;
 
   if (start === 1) {
-    index = end.offset;
+    index = offset;
   } else index = 0;
 
   // Keep requsting until we reach EoM day
-  for (index; index <= end.lastDay - start + end.offset; index++) {
+  for (index; index <= lastDay - start + offset; index++) {
     // Wrap all reqs in promise
     console.time();
     reqs.push(
