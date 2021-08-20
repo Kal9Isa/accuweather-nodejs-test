@@ -21,7 +21,7 @@ Run
 
 - If no args given, the URL given in instrauctions will be used as default.
 
-and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **11.6 s** _Pffffft ... Slow, I know :/_
+and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **800 ms** per day _Pffffft ... Slow, I know :/_
 
 ## View the logic diagram
 
