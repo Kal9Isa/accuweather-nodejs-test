@@ -35,7 +35,8 @@ Performing some tests around individual requests and whole app execution time yi
 | 11                      | 763.262 vs **198.700**    | 1190 vs **333.343**       |
 | 31                      | 730.213 vs **167.906**    | 1031 vs **437.867**       |
 
-## View the logic diagram
+
+## View the logical flow diagram
 
 Using [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) extension, navigate to _diagrams_ directory and click on the `.drawio` file to see the diagram in _VSCode_.
 
