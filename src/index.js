@@ -24,7 +24,8 @@ const sendAllReqs = async (dailyForecastLinks, start, end) => {
   } else index = 0;
 
   // Keep requsting until we reach EoM day
-  for (index; index <= end.lastDay - start + end.offset; index++) {
+  // for (index; index <= end.lastDay - start + end.offset; index++) {
+  for (index = 0; index < 1; index++) {
     // Wrap all reqs in promise
     console.time();
     reqs.push(
