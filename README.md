@@ -23,7 +23,7 @@ Run
 
 and you shall have a _daily-forecast.json_ in the _root_ directory in about sweet **800 ms** per day _Pffffft ... Slow, I know :/_
 
-## View the logic diagram
+## View the logical flow diagram
 
 Using [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) extension, navigate to _diagrams_ directory and click on the `.drawio` file to see the diagram in _VSCode_.
 
