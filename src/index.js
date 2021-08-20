@@ -15,10 +15,16 @@ const weatherSrcURL =
 // Wrap all requests in promise and collect data afterwards
 // Count of requests matches the result to equation below
 // diff = End of Month (EoM) - today
-const sendAllReqs = async (dailyForecastLinks, diff) => {
-  let reqs = [];
+const sendAllReqs = async (dailyForecastLinks, start, end) => {
+  let reqs = [],
+    index;
+
+  if (start === 1) {
+    index = end.offset;
+  } else index = 0;
+
   // Keep requsting until we reach EoM day
-  for (let index = 0; index <= diff; index++) {
+  for (index; index <= end.lastDay - start + end.offset; index++) {
     // Wrap all reqs in promise
     reqs.push(
       // https://www.accuweather.com/en/gb/london/ec4a-2/daily-weather-forecast/328328?day=1
@@ -49,7 +55,8 @@ const main = async () => {
       // Aggregate data from all daily forecast requests
       let final = await sendAllReqs(
         dayLinks,
-        findEoM(response) - findSoM(weatherSrcURL)
+        findSoM(weatherSrcURL),
+        findEoM(response)
       );
 
       fs.writeFile('daily-forecast.json', arrToJSON(final), (err) => {

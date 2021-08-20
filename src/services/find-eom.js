@@ -8,6 +8,13 @@ module.exports.findEoM = (payload) => {
     // Remove tabs and newline chars from data
     .split(/[\t\n]+/);
 
-  // Return max value in array of days
-  return Math.max.apply(null, forecastDays);
+  let firstDay = forecastDays.indexOf('1');
+
+  if (firstDay <= 7) {
+    forecastDays.splice(0, firstDay);
+  }
+
+  // Return number of days counted as offset in array of days or links to reach the 1st day of month
+  // and max value in array of days which would be last day of month
+  return { offset: firstDay - 1, lastDay: Math.max.apply(null, forecastDays) };
 };
